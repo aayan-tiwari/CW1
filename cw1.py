@@ -100,3 +100,9 @@ def whois_lookup(domain_name):
 
     except whois.exceptions.FailedParsingWhoisOutput as e:
         messagebox.showerror("Error", f"Error: {e}")
+
+def show_frame(frame):
+    frame.pack(side=tk.TOP, pady=100)
+
+def hide_frame(frame):
+    frame.pack_forget()
