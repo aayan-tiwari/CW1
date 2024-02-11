@@ -147,3 +147,11 @@ enumerate_button = tk.Button(frame_subdomains, text="Enumerate Subdomains", comm
 enumerate_button.pack(pady=5)
 result_text = tk.Text(frame_subdomains, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
 result_text.pack(pady=10)
+
+clear_subdomains_button = tk.Button(frame_subdomains, text="Clear Result", command=lambda: clear_text_area(result_text))
+clear_subdomains_button.pack(pady=5)
+
+def clear_text_area(text_widget):
+    text_widget.config(state=tk.NORMAL)
+    text_widget.delete(1.0, tk.END)
+    text_widget.config(state=tk.DISABLED)
