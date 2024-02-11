@@ -128,3 +128,6 @@ extract_button = tk.Button(frame_source_code, text="Extract Source Code", comman
 extract_button.pack(pady=5)
 source_code_text = tk.Text(frame_source_code, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
 source_code_text.pack(pady=10)
+
+clear_source_code_button = tk.Button(frame_source_code, text="Clear Result", command=lambda: clear_text_area(source_code_text))
+clear_source_code_button.pack(pady=5)
