@@ -19,3 +19,31 @@ def get_source_code(url):
 
     except requests.RequestException as e:
         messagebox.showerror("Error", f"Error: {e}")
+
+def enumerate_subdomains(domain, wordlist_file):
+    subdomains_found = False
+
+    try:
+        with open(wordlist_file, 'r') as wordlist:
+            subdomains = [line.strip() for line in wordlist.readlines()]
+
+        result_text.config(state=tk.NORMAL)
+        result_text.delete(1.0, tk.END)
+
+        for subdomain in subdomains:
+            full_domain = f"{subdomain}.{domain}"
+            try:
+                answers = dns.resolver.resolve(full_domain, 'A')
+                for answer in answers:
+                    result_text.insert(tk.END, f"Found: {full_domain} - {answer}\n")
+                    subdomains_found = True
+            except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
+                pass  # Do nothing if the subdomain is not found
+
+        if not subdomains_found:
+            result_text.insert(tk.END, "No subdomains found.\n")
+
+        result_text.config(state=tk.DISABLED)
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Error: {e}")
