@@ -64,3 +64,23 @@ def analyze_web_tech(url):
         web_tech_result_text.config(state=tk.DISABLED)
     except Exception as e:
         messagebox.showerror("Error", f"Error analyzing web tech: {e}")
+
+def directory_bruteforce(base_url, wordlist):
+    try:
+        with open(wordlist, 'r') as file:
+            paths = [line.strip() for line in file.readlines()]
+
+        result_directory.config(state=tk.NORMAL)
+        result_directory.delete(1.0, tk.END)
+
+        for path in paths:
+            full_url = f"{base_url}/{path}"
+            response = requests.get(full_url)
+
+            if response.status_code == 200:
+                result_directory.insert(tk.END, f"Found: {full_url}\n")
+
+        result_directory.config(state=tk.DISABLED)
+
+    except Exception as e:
+        messagebox.showerror("Error", f"Error: {e}")
