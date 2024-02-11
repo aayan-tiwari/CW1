@@ -115,3 +115,6 @@ def save_to_file(text_widget, file_extension=".txt"):
 
 def exit_application():
     root.destroy()
+
+root = tk.Tk()
+root.title("Web Enumeration")
