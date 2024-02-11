@@ -118,3 +118,13 @@ def exit_application():
 
 root = tk.Tk()
 root.title("Web Enumeration")
+
+frame_source_code = tk.Frame(root)
+label_source_code = tk.Label(frame_source_code, text="Enter the URL of the website:")
+label_source_code.pack(pady=5)
+entry_source_code = tk.Entry(frame_source_code, width=30)
+entry_source_code.pack(pady=5)
+extract_button = tk.Button(frame_source_code, text="Extract Source Code", command=lambda: get_source_code(entry_source_code.get()))
+extract_button.pack(pady=5)
+source_code_text = tk.Text(frame_source_code, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
+source_code_text.pack(pady=10)
