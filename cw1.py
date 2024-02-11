@@ -84,3 +84,19 @@ def directory_bruteforce(base_url, wordlist):
 
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
+
+def whois_lookup(domain_name):
+    try:
+        domain_info = whois.whois(domain_name)
+        whois_result_text.config(state=tk.NORMAL)
+        whois_result_text.delete(1.0, tk.END)
+        whois_result_text.insert(tk.END, f"Domain Name: {domain_info.domain_name}\n")
+        whois_result_text.insert(tk.END, f"Registrar: {domain_info.registrar}\n")
+        whois_result_text.insert(tk.END, f"Creation Date: {domain_info.creation_date}\n")
+        whois_result_text.insert(tk.END, f"Expiration Date: {domain_info.expiration_date}\n")
+        whois_result_text.insert(tk.END, f"Last Updated: {domain_info.updated_date}\n")
+        whois_result_text.insert(tk.END, f"Name Servers: {domain_info.name_servers}\n")
+        whois_result_text.config(state=tk.DISABLED)
+
+    except whois.exceptions.FailedParsingWhoisOutput as e:
+        messagebox.showerror("Error", f"Error: {e}")
