@@ -47,3 +47,8 @@ def enumerate_subdomains(domain, wordlist_file):
 
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
+
+def browse_wordlist(entry_widget):
+    wordlist_file_path = filedialog.askopenfilename(title="Select Wordlist File", filetypes=[("Text Files", "*.txt")])
+    entry_widget.delete(0, tk.END)
+    entry_widget.insert(tk.END, wordlist_file_path)
