@@ -106,3 +106,12 @@ def show_frame(frame):
 
 def hide_frame(frame):
     frame.pack_forget()
+
+def save_to_file(text_widget, file_extension=".txt"):
+    file_path = filedialog.asksaveasfilename(defaultextension=file_extension, filetypes=[("Text Files", "*.txt")])
+    if file_path:
+        with open(file_path, 'w') as file:
+            file.write(text_widget.get(1.0, tk.END))
+
+def exit_application():
+    root.destroy()
