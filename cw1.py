@@ -52,3 +52,15 @@ def browse_wordlist(entry_widget):
     wordlist_file_path = filedialog.askopenfilename(title="Select Wordlist File", filetypes=[("Text Files", "*.txt")])
     entry_widget.delete(0, tk.END)
     entry_widget.insert(tk.END, wordlist_file_path)
+
+def analyze_web_tech(url):
+    wt = webtech.WebTech()
+
+    try:
+        results = wt.start_from_url(url, timeout=1)
+        web_tech_result_text.config(state=tk.NORMAL)
+        web_tech_result_text.delete(1.0, tk.END)
+        web_tech_result_text.insert(tk.END, results)
+        web_tech_result_text.config(state=tk.DISABLED)
+    except Exception as e:
+        messagebox.showerror("Error", f"Error analyzing web tech: {e}")
