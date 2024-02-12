@@ -250,3 +250,21 @@ Usage:
 5. Clear buttons are provided to clear the result areas.
 """
     messagebox.showinfo("Project Documentation", help_text)
+
+file_menu = tk.Menu(root)
+root.config(menu=file_menu)
+
+save_menu = tk.Menu(file_menu, tearoff=0)
+file_menu.add_cascade(label="File", menu=save_menu)
+save_menu.add_command(label="Save Subdomains Result", command=lambda: save_to_file(result_text))
+save_menu.add_command(label="Save WHOIS Result", command=lambda: save_to_file(whois_result_text))
+save_menu.add_command(label="Save Web Tech Result", command=lambda: save_to_file(web_tech_result_text))
+save_menu.add_command(label="Save Directory Result", command=lambda: save_to_file(result_directory))
+save_menu.add_command(label="Save Source Code", command=lambda: save_to_file(source_code_text))
+save_menu.add_separator()
+save_menu.add_command(label="Exit", command=exit_application)  # Add an "Exit" option here
+help_menu = tk.Menu(file_menu, tearoff=False)
+file_menu.add_cascade(label="Help", menu=help_menu)
+help_menu.add_command(label="Documentation", command=show_help)
+
+root.mainloop()
