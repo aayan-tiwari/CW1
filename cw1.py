@@ -155,3 +155,13 @@ def clear_text_area(text_widget):
     text_widget.config(state=tk.NORMAL)
     text_widget.delete(1.0, tk.END)
     text_widget.config(state=tk.DISABLED)
+
+frame_whois = tk.Frame(root)
+label_whois_domain = tk.Label(frame_whois, text="Enter the domain name for WHOIS lookup:")
+label_whois_domain.pack(pady=5)
+entry_whois_domain = tk.Entry(frame_whois, width=30)
+entry_whois_domain.pack(pady=5)
+whois_lookup_button = tk.Button(frame_whois, text="WHOIS Lookup", command=lambda: whois_lookup(entry_whois_domain.get()))
+whois_lookup_button.pack(pady=5)
+whois_result_text = tk.Text(frame_whois, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
+whois_result_text.pack(pady=10)
