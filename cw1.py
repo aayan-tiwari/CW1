@@ -197,3 +197,16 @@ directory_bruteforce_button = tk.Button(frame_directory, text="Directory Brutefo
 directory_bruteforce_button.pack(pady=5)
 result_directory = tk.Text(frame_directory, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
 result_directory.pack(pady=5)
+
+clear_directory_button = tk.Button(frame_directory, text="Clear Result", command=lambda: clear_text_area(result_directory))
+clear_directory_button.pack(pady=5)
+
+def show_hide_frames(frame_to_show):
+    frames = [frame_subdomains, frame_whois, frame_web_tech, frame_directory, frame_source_code]
+    for frame in frames:
+        if frame == frame_to_show:
+            show_frame(frame)
+        else:
+            hide_frame(frame)
+
+    submenu_frame.lift()
