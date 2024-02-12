@@ -165,3 +165,6 @@ whois_lookup_button = tk.Button(frame_whois, text="WHOIS Lookup", command=lambda
 whois_lookup_button.pack(pady=5)
 whois_result_text = tk.Text(frame_whois, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
 whois_result_text.pack(pady=10)
+
+clear_whois_button = tk.Button(frame_whois, text="Clear Result", command=lambda: clear_text_area(whois_result_text))
+clear_whois_button.pack(pady=5)
