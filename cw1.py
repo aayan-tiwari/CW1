@@ -178,3 +178,6 @@ analyze_web_tech_button = tk.Button(frame_web_tech, text="Analyze Web Tech", com
 analyze_web_tech_button.pack(pady=5)
 web_tech_result_text = tk.Text(frame_web_tech, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
 web_tech_result_text.pack(pady=10)
+
+clear_web_tech_button = tk.Button(frame_web_tech, text="Clear Result", command=lambda: clear_text_area(web_tech_result_text))
+clear_web_tech_button.pack(pady=5)
