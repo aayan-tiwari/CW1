@@ -225,3 +225,28 @@ for text, command in submenu_buttons:
     button = tk.Button(submenu_frame, text=text, command=command)
     button.pack(side=tk.LEFT, padx=5)
 submenu_frame.pack(side=tk.TOP,pady=5)
+
+show_frame(frame_source_code)
+
+def show_help():
+    help_text = """
+Module Purpose:
+This application provides tools for web enumeration, including extracting source code,
+enumerating subdomains, performing WHOIS lookup, analyzing web technologies, and
+directory brute-forcing.
+
+Functionality:
+1. Source Code Extraction: Extracts the source code of a given URL.
+2. Subdomain Enumeration: Enumerates subdomains of a given domain using a provided wordlist.
+3. WHOIS Lookup: Performs a WHOIS lookup for a given domain.
+4. Web Tech Analysis: Analyzes the technologies used by a website.
+5. Directory Bruteforce: Attempts to find directories on a website using a provided wordlist.
+
+Usage:
+1. Enter the URL/domain in the corresponding entry field.
+2. Select options such as wordlist file for subdomain enumeration or directory brute-forcing.
+3. Click on the corresponding action button to perform the desired operation.
+4. Results will be displayed in the text area, and you can save them using the File menu.
+5. Clear buttons are provided to clear the result areas.
+"""
+    messagebox.showinfo("Project Documentation", help_text)
