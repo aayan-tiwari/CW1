@@ -210,3 +210,11 @@ def show_hide_frames(frame_to_show):
             hide_frame(frame)
 
     submenu_frame.lift()
+
+submenu_buttons = [
+    ("Source Code", lambda: show_hide_frames(frame_source_code)),
+    ("Subdomains", lambda: show_hide_frames(frame_subdomains)),
+    ("WHOIS", lambda: show_hide_frames(frame_whois)),
+    ("Web Tech", lambda: show_hide_frames(frame_web_tech)),
+    ("Directory", lambda: show_hide_frames(frame_directory)),
+]
