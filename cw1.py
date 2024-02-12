@@ -218,3 +218,10 @@ submenu_buttons = [
     ("Web Tech", lambda: show_hide_frames(frame_web_tech)),
     ("Directory", lambda: show_hide_frames(frame_directory)),
 ]
+
+submenu_frame = tk.Frame(root)
+
+for text, command in submenu_buttons:
+    button = tk.Button(submenu_frame, text=text, command=command)
+    button.pack(side=tk.LEFT, padx=5)
+submenu_frame.pack(side=tk.TOP,pady=5)
