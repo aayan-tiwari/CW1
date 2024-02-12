@@ -168,3 +168,13 @@ whois_result_text.pack(pady=10)
 
 clear_whois_button = tk.Button(frame_whois, text="Clear Result", command=lambda: clear_text_area(whois_result_text))
 clear_whois_button.pack(pady=5)
+
+frame_web_tech = tk.Frame(root)
+label_web_tech = tk.Label(frame_web_tech, text="Enter the URL for Web Tech analysis:")
+label_web_tech.pack(pady=5)
+entry_web_tech = tk.Entry(frame_web_tech, width=30)
+entry_web_tech.pack(pady=5)
+analyze_web_tech_button = tk.Button(frame_web_tech, text="Analyze Web Tech", command=lambda: analyze_web_tech(entry_web_tech.get()))
+analyze_web_tech_button.pack(pady=5)
+web_tech_result_text = tk.Text(frame_web_tech, wrap=tk.WORD, height=30, width=80, state=tk.DISABLED)
+web_tech_result_text.pack(pady=10)
