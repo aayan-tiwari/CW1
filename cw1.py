@@ -3,7 +3,7 @@ from tkinter import filedialog, messagebox
 import dns.resolver
 import requests
 import webtech
-import whois
+import subprocess
 
 def get_source_code(url):
     try:
@@ -87,19 +87,13 @@ def directory_bruteforce(base_url, wordlist):
 
 def whois_lookup(domain_name):
     try:
-        domain_info = whois.whois(domain_name)
+        result = subprocess.run(['whois', domain_name], capture_output=True, text=True)
         whois_result_text.config(state=tk.NORMAL)
         whois_result_text.delete(1.0, tk.END)
-        whois_result_text.insert(tk.END, f"Domain Name: {domain_info.domain_name}\n")
-        whois_result_text.insert(tk.END, f"Registrar: {domain_info.registrar}\n")
-        whois_result_text.insert(tk.END, f"Creation Date: {domain_info.creation_date}\n")
-        whois_result_text.insert(tk.END, f"Expiration Date: {domain_info.expiration_date}\n")
-        whois_result_text.insert(tk.END, f"Last Updated: {domain_info.updated_date}\n")
-        whois_result_text.insert(tk.END, f"Name Servers: {domain_info.name_servers}\n")
+        whois_result_text.insert(tk.END, result.stdout)
         whois_result_text.config(state=tk.DISABLED)
-
-    except whois.exceptions.FailedParsingWhoisOutput as e:
-        messagebox.showerror("Error", f"Error: {e}")
+    except FileNotFoundError:
+        messagebox.showerror("Error", "'whois' command not found. Make sure it is installed and available in your system.")
 
 def show_frame(frame):
     frame.pack(side=tk.TOP, pady=100)
