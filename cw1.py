@@ -38,8 +38,7 @@ def enumerate_subdomains(domain, wordlist_file):
                     result_text.insert(tk.END, f"Found: {full_domain} - {answer}\n")
                     subdomains_found = True
             except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
-                pass  # Do nothing if the subdomain is not found
-
+                pass  
         if not subdomains_found:
             result_text.insert(tk.END, "No subdomains found.\n")
 
@@ -256,7 +255,7 @@ save_menu.add_command(label="Save Web Tech Result", command=lambda: save_to_file
 save_menu.add_command(label="Save Directory Result", command=lambda: save_to_file(result_directory))
 save_menu.add_command(label="Save Source Code", command=lambda: save_to_file(source_code_text))
 save_menu.add_separator()
-save_menu.add_command(label="Exit", command=exit_application)  # Add an "Exit" option here
+save_menu.add_command(label="Exit", command=exit_application)
 help_menu = tk.Menu(file_menu, tearoff=False)
 file_menu.add_cascade(label="Help", menu=help_menu)
 help_menu.add_command(label="Documentation", command=show_help)
